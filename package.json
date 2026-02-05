@@ -1,0 +1,47 @@
+{
+  "name": "paralysis",
+  "version": "1.0.0",
+  "description": "Map over promises concurrently",
+  "repository": "th3rius/paralysis",
+  "keywords": [
+    "async",
+    "concurrency",
+    "parallel",
+    "limit",
+    "queue",
+    "throttle",
+    "promise"
+  ],
+  "author": "Gabriel de Oliveira <gabrielhk3@gmail.com> (https://nocnitsa.com)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "build": "rimraf dist && pkgroll --sourcemap",
+    "test": "node --test --experimental-test-module-mocks **/*.spec.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "dependencies": {
+    "tinyqueue": "^2.0.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.2.0",
+    "husky": "^9.1.7",
+    "pkgroll": "^2.21.5",
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3"
+  }
+}
