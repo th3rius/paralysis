@@ -25,6 +25,9 @@ export function paralysis(list, fn, concurrency = Infinity) {
   }
 
   function runRecipe([fn, args]) {
+    // Note that if `fn` throws an synchronous error
+    // inside it will reject the promise. This wouldn't
+    // happen if we used `Promise.resolve()` directly.
     return new Promise((resolve) => {
       resolve(fn(...args));
     }).finally(release);
