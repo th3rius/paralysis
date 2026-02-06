@@ -9,6 +9,9 @@ type Promisable<T> = T | PromiseLike<T>;
  * ```js
  * import parallel from "paralysis";
  *
+ * const ids = [1, 2, 3, 4, 5];
+ * const concurrency = 2;
+ *
  * async function getUser(id) {
  *   const response = await fetch(
  *     `https://jsonplaceholder.typicode.com/users/${id}`,
@@ -17,7 +20,7 @@ type Promisable<T> = T | PromiseLike<T>;
  *   return user;
  * }
  *
- * const users = await parallel([1, 2, 3, 4, 5], getUser, 2);
+ * const users = await parallel(ids, getUser, concurrency);
  * ```
  *
  * @param list List that is iterated over concurrently, calling `fn` for each item.
