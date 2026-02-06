@@ -1,6 +1,6 @@
 {
   "name": "paralysis",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Map over promises concurrently",
   "repository": "th3rius/paralysis",
   "keywords": [
