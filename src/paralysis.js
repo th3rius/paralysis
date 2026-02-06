@@ -1,14 +1,6 @@
 import TinyQueue from "tinyqueue";
 
-export function paralysis(list, fn, concurrency = Infinity) {
-  if (typeof fn !== "function") {
-    throw new TypeError(`${fn} is not a function`);
-  }
-
-  if (!(typeof concurrency === "number" && concurrency >= 1)) {
-    throw new TypeError("Expected `concurrency` to be a number from 1 and up");
-  }
-
+function createRun(concurrency) {
   const queue = new TinyQueue();
   let slots = Math.floor(concurrency);
 
@@ -33,7 +25,7 @@ export function paralysis(list, fn, concurrency = Infinity) {
     }).finally(release);
   }
 
-  function run(recipe) {
+  return function run(recipe) {
     // If we have an available slot, take the slot and return
     // a promise that executes the function immediately.
     if (slots > 0) {
@@ -47,7 +39,18 @@ export function paralysis(list, fn, concurrency = Infinity) {
     return new Promise((resolve) => {
       queue.push([resolve, recipe]);
     }).then(runRecipe);
+  };
+}
+
+export function paralysis(list, fn, concurrency = Infinity) {
+  if (typeof fn !== "function") {
+    throw new TypeError(`${fn} is not a function`);
   }
 
+  if (!(typeof concurrency === "number" && concurrency >= 1)) {
+    throw new TypeError("Expected `concurrency` to be a number from 1 and up");
+  }
+
+  const run = createRun(concurrency);
   return Promise.all(Array.from(list, (...args) => run([fn, args])));
 }
