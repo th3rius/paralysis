@@ -1,6 +1,10 @@
 import TinyQueue from "tinyqueue";
 
 export function paralysis(list, fn, concurrency = Infinity) {
+  if (typeof fn !== "function") {
+    throw new TypeError(`${fn} is not a function`);
+  }
+
   if (!(typeof concurrency === "number" && concurrency >= 1)) {
     throw new TypeError("Expected `concurrency` to be a number from 1 and up");
   }
