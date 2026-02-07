@@ -17,7 +17,7 @@ function createRun(concurrency) {
   }
 
   function runRecipe([fn, args]) {
-    // Note that if `fn` throws an synchronous error
+    // Note that if `fn` throws a synchronous error
     // inside it will reject the promise. This wouldn't
     // happen if we used `Promise.resolve()` directly.
     return new Promise((resolve) => {
