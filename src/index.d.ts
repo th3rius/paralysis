@@ -29,7 +29,7 @@ type Promisable<T> = T | PromiseLike<T>;
  * @returns A new promise.
  */
 export default function paralysis<T, U>(
-  list: ArrayLike<T>,
+  list: Iterable<T> | ArrayLike<T>,
   fn: (element: T, index: number) => Promisable<U>,
   concurrency?: number,
 ): Promise<Array<U>>;
