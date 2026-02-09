@@ -34,8 +34,7 @@
     }
   },
   "dependencies": {
-    "tinyqueue": "^2.0.3",
-    "to-array": "^0.1.4"
+    "tinyqueue": "^2.0.3"
   },
   "devDependencies": {
     "@faker-js/faker": "^10.2.0",
