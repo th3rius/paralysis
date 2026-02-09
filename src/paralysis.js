@@ -53,5 +53,5 @@ export function paralysis(list, fn, concurrency = Infinity) {
   }
 
   const run = createRun(concurrency);
-  return Promise.all(toArray(list).map((...args) => run([fn, args])));
+  return Promise.all(toArray(list ?? []).map((...args) => run([fn, args])));
 }
