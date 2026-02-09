@@ -30,6 +30,6 @@ type Promisable<T> = T | PromiseLike<T>;
  */
 export default function paralysis<T, U>(
   list: ArrayLike<T>,
-  fn: (element: T, index: number) => Promisable<U>,
+  fn: (value: T, index: number, array: Array<T>) => Promisable<U>,
   concurrency?: number,
 ): Promise<Array<U>>;

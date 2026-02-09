@@ -1,6 +1,6 @@
 {
   "name": "paralysis",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Map over promises concurrently",
   "repository": "th3rius/paralysis",
   "keywords": [
@@ -34,7 +34,8 @@
     }
   },
   "dependencies": {
-    "tinyqueue": "^2.0.3"
+    "tinyqueue": "^2.0.3",
+    "to-array": "^0.1.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^10.2.0",

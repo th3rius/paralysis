@@ -1,4 +1,5 @@
 import TinyQueue from "tinyqueue";
+import toArray from "to-array";
 
 function createRun(concurrency) {
   const queue = new TinyQueue();
@@ -52,5 +53,5 @@ export function paralysis(list, fn, concurrency = Infinity) {
   }
 
   const run = createRun(concurrency);
-  return Promise.all(Array.from(list, (...args) => run([fn, args])));
+  return Promise.all(toArray(list).map((...args) => run([fn, args])));
 }
