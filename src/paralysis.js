@@ -1,13 +1,13 @@
-import TinyQueue from "tinyqueue";
+import Denque from "denque";
 
 function createRun(concurrency) {
-  const queue = new TinyQueue();
+  const queue = new Denque();
   let slots = Math.floor(concurrency);
 
   function release() {
     // Check if we have more functions waiting in the queue. If we
     // do, run the next delayed function. Otherwise, free a slot.
-    const next = queue.pop();
+    const next = queue.shift();
     if (next) {
       const [resolve, delayed] = next;
       resolve(delayed);
